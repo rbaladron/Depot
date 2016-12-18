@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   has_many :line_items
+  has_many :orders, through: :line_items
 
   before_destroy :ensure_not_referenced_by_any_line_item
 
@@ -11,7 +12,7 @@ class Product < ApplicationRecord
     message: 'must be a url for GIF, JPG, or PNG image.'
   }
   validates :title, length: {minimum: 10}
-  
+
   private
 
   # ensure that there are no line items referencing this producct
