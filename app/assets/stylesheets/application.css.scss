@@ -54,17 +54,15 @@ body > ul {
     padding: 1em;
     background: white;
     flex: 1;
-
   }
   #side {
     padding: 1em 2em;
     background: #141;
-    a{
-      background-color:transparent;
+    a {
+      background-color: transparent;
     }
-
-    form,
-    div {
+    div,
+    form {
       display: inline;
     }
     input {
@@ -106,5 +104,37 @@ body > ul {
   }
   #banner .title {
     display: none;
+  }
+}
+.depot_form {
+  fieldset {
+    background: #efe;
+    legend {
+      color: #dfd;
+      background: #141;
+      font-family: sans-serif;
+      padding: 0.2em 1em;
+    }
+  }
+  form {
+    label {
+      width: 5em;
+      float: left;
+      text-align: right;
+      padding-top: 0.2em;
+      margin-right: 0.1em;
+      display: block;
+    }
+    input,
+    select,
+    textarea {
+      margin-left: 0.5em;
+    }
+    .submit {
+      margin-left: 4em;
+    }
+    br {
+      display: none;
+    }
   }
 }
