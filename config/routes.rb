@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :line_items
+  resources :line_items do
+    #member do
+    #   post 'decrement'
+    #end
+    put 'decrease', on: :member
+    put 'increase', on: :member
+  end
   resources :carts
   #get 'store/index'
 
@@ -7,5 +13,6 @@ Rails.application.routes.draw do
   resources :products
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'store#index', as: 'store'
+
 
 end

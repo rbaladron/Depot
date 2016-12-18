@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentCart
-  before_action :set_cart, only: [:create]
+  before_action :set_cart, only: [:create, :decrease, :increase]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items
@@ -50,6 +50,42 @@ class LineItemsController < ApplicationController
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def decrease
+    #@cart = current_cart
+    @line_item = @cart.decrease(params[:id])
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.js   { @current_item = @line_item }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /line_items/1
+  # PUT /line_items/1.json
+  def increase
+    #@cart = current_cart
+    @line_item = @cart.increase(params[:id])
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.js   { @current_item = @line_item }
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
