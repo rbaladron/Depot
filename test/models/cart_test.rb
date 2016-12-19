@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class CartTest < ActiveSupport::TestCase
-
   def setup
     @cart = Cart.create
     @book_one = products(:ruby)
