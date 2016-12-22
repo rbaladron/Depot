@@ -48,15 +48,15 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
     def test_two_people_buying
         perform_enqueued_jobs do
             dave = regular_user
-            mike = regular_user
+              mike = regular_user
             dave.buys_a @ruby_book
-            mike.buys_a @rails_book
+              mike.buys_a @rails_book
             dave.has_a_cart_containing @ruby_book
             dave.checks_out DAVES_DETAILS
-            mike.has_a_cart_containing @rails_book
+              mike.has_a_cart_containing @rails_book
             check_for_order DAVES_DETAILS, @ruby_book
-            mike.checks_out MIKES_DETAILS
-            check_for_order MIKES_DETAILS, @rails_book
+              mike.checks_out MIKES_DETAILS
+              check_for_order MIKES_DETAILS, @rails_book
         end
     end
 
@@ -64,11 +64,11 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
         open_session do |user|
             def user.is_viewing(page)
                 assert_response :success
-                assert_select "h1", page
+                assert_select 'h1', page
             end
 
             def user.buys_a(product)
-                post "/line_items", params: { product_id: product.id }, xhr: true
+                post '/line_items', params: { product_id: product.id }, xhr: true
                 assert_response :success
             end
 
@@ -83,7 +83,7 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
             def user.checks_out(details)
                 get "/orders/new"
                 assert_response :success
-                assert_select "legend", "Please Enter Your Details"
+                assert_select 'legend', "Please Enter Your Details"
 
                 post "/orders", params: {
                     order: {
