@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   get 'admin' => 'admin#index'
+
   controller :sessions do
     get  'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
   end
 
-  get "sessions/create"
-  get "sessions/destroy"
   resources :users
   resources :orders
   resources :line_items do
@@ -18,8 +17,8 @@ Rails.application.routes.draw do
     put 'increase', on: :member
   end
   resources :carts
+  root 'store#index', as: 'store_index'
 
-  get 'store/index'
   resources :products do
     get :download, :on=> :member
     get :who_bought, on: :member
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
   # first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"
-  root 'store#index', as: 'store'
+
   # ...
 
   # Example of regular route:
