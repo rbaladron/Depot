@@ -42,3 +42,12 @@ Product.create!(title: 'Rails Test Prescriptions',
       </p>},
   image_url: 'rtp.jpg',
   price: 34.95)
+
+  User.delete_all
+  User.create!(name: 'dave',
+    password_digest:  BCrypt::Password.create('secret') )
+
+  # . . .
+  User.create!(name: 'susannah',
+    password_digest: BCrypt::Password.create('secret')
+    )
