@@ -51,6 +51,7 @@ en:
       empty:       "Empty cart"
       checkout:    "Checkout"
       confirm:     "Are you sure?"
+      is_empty:    "Your cart is empty"
 
   store:
     index:

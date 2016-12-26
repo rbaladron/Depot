@@ -35,6 +35,7 @@ es:
       empty:       "Vaciar Carrito"
       checkout:    "Comprar"
       confirm:     "¿Est&aacute; usted seguro?"
+      is_empty:    "El Carrito de la Compra est&aacute vac$iacute;o."
 
   store:
     index:
