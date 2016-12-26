@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
         session[:cart_id] = nil
         OrderMailer.received(@order).deliver_later
         format.html { redirect_to store_index_url,
-          notice: I18n.t('.thanks') }
+          notice: I18n.t('orders.thanks') }
         format.json { render :show, status: :created,
           location: @order }
       else
@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to @order, notice: I18n.t('.update') }
+        format.html { redirect_to @order, notice: I18n.t('orders.update') }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: I18n.t('.destroy')}
+      format.html { redirect_to orders_url, notice: I18n.t('orders.destroy')}
       format.json { head :no_content }
     end
   end
@@ -87,7 +87,7 @@ class OrdersController < ApplicationController
   private
      def ensure_cart_isnt_empty
        if @cart.line_items.empty?
-         redirect_to store_index_url, notice: I18n.t('.empty')
+         redirect_to store_index_url, notice: I18n.t('carts.cart.empty')
        end
      end
 end

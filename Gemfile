@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-# Heroku should use tis version of ruby
+# Heroku should use this version of ruby
 ruby '2.3.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.1'
@@ -11,10 +11,12 @@ gem 'puma', '~> 3.0'
 # sqlite3 for development and test database
 
 # postgres for production database
-gem 'pg', group: :production
+group :production do
+  gem 'pg'
+  # 12 factor for Heroku
+  gem 'rails_12factor'
+end
 
-# 12 factor for Heroku
-gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -58,8 +60,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+# gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Para los test
 gem 'rails-controller-testing'
