@@ -44,6 +44,11 @@ en:
       questions:   "Questions"
       news:        "News"
       contact:     "Contact"
+      logout:      "Logout"
+      menu:
+        orders:      "Orders"
+        products:    "Products"
+        users:       "Users"
 
   carts:
     cart:
@@ -57,10 +62,7 @@ en:
     index:
       title_html:  "Your Pragmatic Catalog"
       add_html:    "Add to Cart"
-    menu:
-      orders:      "Orders"
-      products:    "Products"
-      users:       "Users"
+
 
   orders:
     new:
@@ -75,10 +77,12 @@ en:
       pay_type:     "Pay with"
       pay_prompt_html: "Select a payment method"
       submit:       "Place Order"
+
   users:
     name:           "Name:"
     password:       "Password:"
     confirm:        "Confirm:"
+
   sessions:
-    login:          "Conectar"
-    logout:         "Desconectar"
+    login:          "Login"
+    logout:         "Logout"
